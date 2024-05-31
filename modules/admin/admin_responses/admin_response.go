@@ -2,13 +2,20 @@ package responses
 
 import commonresponse "github.com/natersland/akira-website-api-v2/common/common_response"
 
-type CreateAdminResponse struct {
+type AdminFieldResponse struct {
+	Id       string `json:"id"`
+	Username string `json:"username"`
+	Email    string `json:"email"`
+}
+
+type GetAdminsResponse struct {
 	Status commonresponse.CommonResponse `json:"status"`
-	Data   struct {
-		ID       string `json:"id"`
-		Username string `json:"username"`
-		Email    string `json:"email"`
-	} `json:"data"`
+	Data   []AdminFieldResponse          `json:"data"`
+}
+
+type GetAdminDetailResponse struct {
+	Status commonresponse.CommonResponse `json:"status"`
+	Data   *AdminFieldResponse           `json:"data"`
 }
 
 type ChangePasswordResponse struct {
@@ -31,11 +38,6 @@ type ChangeEmailResponse struct {
 	}
 }
 
-type GetAdminResponse struct {
+type DeleteAdminResponse struct {
 	Status commonresponse.CommonResponse `json:"status"`
-	Data   struct {
-		Id       string `json:"id"`
-		Username string `json:"username"`
-		Email    string `json:"email"`
-	}
 }
